@@ -18,8 +18,7 @@ class Router {
             $controllerName =  str_replace('Controller', '', $urlParts[0]);
             $actionName = (isset($urlParts[1]) ? $urlParts[1] : 'index') . 'Action';
             $params = $checkedRoute['params'];
-            $controllerClassName = ucfirst($controllerName);
-            $controllerClassName = 'App\\Controllers\\'. $controllerClassName;
+            $controllerClassName = 'App\\Controllers\\'. ucfirst($controllerName) . 'Controller';
             $ctrl = new $controllerClassName();
             if (method_exists($ctrl, $actionName)) {
                 call_user_func_array(array($ctrl, $actionName), $params);
