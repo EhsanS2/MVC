@@ -10,4 +10,5 @@ class Controller {
     protected function render($viewPath , $data=[]) {
         View::render($viewPath, $data);
     }
+    
 }
