@@ -1,9 +1,13 @@
 <?php
 
 namespace App;
+use App\View;
 
 class Controller {
     function __construct() {
-        echo 'sakhte shod!';
+    }
+
+    protected function render($viewPath , $data=[]) {
+        View::render($viewPath, $data);
     }
 }

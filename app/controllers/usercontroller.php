@@ -6,6 +6,6 @@ use App\User;
 
 class UserController extends Controller{
     public function showAction() {
-        dd(new User);
+        $this->render('user.show' , ['name' => 'Ehsan']);
     }
 }
