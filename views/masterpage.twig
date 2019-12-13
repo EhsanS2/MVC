@@ -3,9 +3,11 @@
     <title>Page title</title>
 </head>
 <body>
-
+{% import 'helpers.twig' as helpers %}
+{{ helpers.partials('header') }}
 {% block body %}
     default content ...
 {% endblock %}
+{{ helpers.partials('footer') }}
 </body>
 </html>
