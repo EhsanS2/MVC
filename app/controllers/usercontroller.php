@@ -11,6 +11,7 @@ for reducing complexity, 'controller' added at the end of classnames*/
 class UserController extends Controller {
     public function showAction() {
         $user = new User();
+        $r = $user->db()->query("INSERT INTO table1 (name, family, age) VALUES ('ehsan', 'hatefi', 26)");
         $this->render('user.show', ['name' => 'Ehsan']);
     }
 

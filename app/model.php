@@ -2,13 +2,22 @@
 namespace App;
 
 class Model {
-    protected $db;
+    private $_db;
 
     public function __construct() {
         $dbconf = Env::get('database');
-        $connectionString = $dbconf['driver'] . ':host=' .
-                            $dbconf['host'] . ';dbname=' .
-                            $dbconf['dbname'] . ';';
-        $this->db = new Db($connectionString, $dbconf['username'], $dbconf['password'] );
+        try {
+            $connectionString = $dbconf['driver'] . ':host=' .
+                                $dbconf['host'] . ';dbname=' .
+                                $dbconf['dbname'] . ';charset=' .
+                                $dbconf['charset'];
+            $this->_db = new Db($connectionString, $dbconf['username'], $dbconf['password']);
+        } catch (\PDOException $e) {
+            echo($e->getMessage());
+        }
+    }
+
+    public function db() {
+        return $this->_db;
     }
 }

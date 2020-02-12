@@ -5,6 +5,6 @@
     "dbname": "test",
     "username": "root",
     "password": "",
-    "charset": "utf-8"
+    "charset": "utf8"
   }
 }
