@@ -8,12 +8,12 @@ class Router {
         return self::$_routes;
     }
 
-    public static function route($url) {
-        $checkedRoute = self::checkRoute($url);
+    public static function route($url) { //this is main method
+        $checkedRoute = self::checkRoute($url); //if there is a registered route
         if(is_callable($checkedRoute['action'])) {
             call_user_func_array($checkedRoute['action'], $checkedRoute['params']);
         }
-        if ($checkedRoute !== false) {
+        if ($checkedRoute !== false) { 
             $urlParts = explode('.', $checkedRoute['action']);
             $controllerName =  str_replace('Controller', '', $urlParts[0]);
             $actionName = (isset($urlParts[1]) ? $urlParts[1] : 'index') . 'Action';
@@ -30,7 +30,7 @@ class Router {
         }
     }
 
-    public static function register($route, $routeAction, $config = []) {
+    public static function register($route, $routeAction, $config = []) { //this registers new routes
         $config = self::getConfig($config);
         preg_match_all('/^([^{]+)\//', $route, $matches);
         $rParams = [];
@@ -68,7 +68,7 @@ class Router {
         return false;
     }
 
-    private static function removeArbitraryParams($params) {
+    private static function removeArbitraryParams($params) { //this method removes arbitrary patameters
         $params2 = [];
         foreach ($params as $key => $value) {
             if($value[0] === "?") {
@@ -79,7 +79,7 @@ class Router {
         return [];
     }
 
-    private static function getConfig($config) {
+    private static function getConfig($config) { //this method sets configuration
         $ret = self::$_defaultConfig;
         foreach ($config as $cName => $cVal) {
             $ret[$cName] = $cVal;

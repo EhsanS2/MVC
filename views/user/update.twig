@@ -1,5 +1,6 @@
 {% extends'masterpage.twig' %}
 
 {% block body %}
-    Your name is {{ name }}
+    {% set name = "<b>sss</b>" %}
+    Your name is {{ name|e }}
 {% endblock %}

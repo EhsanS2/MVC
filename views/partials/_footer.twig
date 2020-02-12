@@ -1,5 +1,8 @@
 <div>
     {% block footer %}
         default footer ...
+        {% for i in range(0,4) %}
+            {{ i }}
+        {% endfor %}
     {% endblock %}
 </div>
